@@ -12,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean
 
 # Download and install Sencha Cmd
-RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/4.0.5.87/SenchaCmd-4.0.5.87-linux-x64.run.zip && \
+RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/5.1.3.61/SenchaCmd-5.1.3.61-linux-x64.run.zip && \
     unzip -p /cmd.run.zip > /cmd-install.run && \
     chmod +x /cmd-install.run && \
     /cmd-install.run --mode unattended --prefix /opt && \
@@ -24,5 +24,5 @@ VOLUME ["/data"]
 WORKDIR /data
 
 # Container entry point is `sencha`, default command is `help`
-ENTRYPOINT ["/opt/Sencha/Cmd/4.0.5.87/sencha"]
+ENTRYPOINT ["/opt/Sencha/Cmd/5.1.3.61/sencha"]
 CMD ["help"]
