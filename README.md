@@ -9,7 +9,7 @@ This image is based of Debian Jessie
 * Sencha SenchaCmd-5.1.3.61
 * Ruby 2.1
 * Java OpenJDK 7
-* A non-root user named `enduser` and in a `enduser` group
+* A non-root user named `enduser` (UID 1000) and in a `enduser` (GID 1000) group
 
 ## How to use this image
 
