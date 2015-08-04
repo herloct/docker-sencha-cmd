@@ -4,11 +4,17 @@
 
 ## What's Inside
 
-This image is based of Debian Jessie
+This image is based of [Phusion Base Image](https://registry.hub.docker.com/u/phusion/baseimage/)
 
-* Sencha SenchaCmd-5.1.3.61
-* Ruby 2.1
-* Java OpenJDK 7
+* Sencha CMD 5.x/6.x
+* Ruby 2.0
+* Java OpenJDK 7 JRE
+
+## Supported tags and respective `Dockerfile` links
+
+* [`5.1.3.61`](http://https://github.com/herloct/docker-sencha-cmd/blob/master/5.1.3.61/Dockerfile)
+* [`6.0.0.202`, `latest`](https://github.com/herloct/docker-sencha-cmd/blob/master/6.0.0.202/Dockerfile)
+
 
 ## How to use this image
 
