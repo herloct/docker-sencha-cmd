@@ -1,10 +1,10 @@
-FROM debian:jessie
+FROM phusion/baseimage
 
 MAINTAINER herloct <herloct@gmail.com>
 
 # Install openjdk7 and ruby
 RUN apt-get update && \
-    apt-get install -y openjdk-7-jdk ruby curl unzip
+    apt-get install -y openjdk-7-jre ruby2.0 unzip
 
 RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/5.1.3.61/SenchaCmd-5.1.3.61-linux-x64.run.zip && \
     unzip -p /cmd.run.zip > /cmd-install.run && \
@@ -15,5 +15,5 @@ RUN curl -o /cmd.run.zip http://cdn.sencha.com/cmd/5.1.3.61/SenchaCmd-5.1.3.61-l
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT ["/opt/Sencha/Cmd/5.1.3.61/sencha"]
+ENTRYPOINT ["/sbin/my_init", "--", "/opt/Sencha/Cmd/5.1.3.61/sencha"]
 CMD ["help"]
