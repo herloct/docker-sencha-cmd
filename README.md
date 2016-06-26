@@ -16,22 +16,22 @@ This image is based of [Debian Image](https://hub.docker.com/_/debian/)
 
 Basic usage
 
-    docker run --rm -v /local/path:/home/sencha/app herloct/sencha-cmd [<options>]
+    docker run --rm -v /local/path:/project herloct/sencha-cmd [<options>]
 
 For example, to generate new ExtJS application on current directory
 
-    docker run --rm -v "$(pwd)":/home/sencha/app herloct/sencha-cmd -sdk /path/to/ext-x.x.x.x generate app MyApp .
+    docker run --rm -v "$(pwd)":/project herloct/sencha-cmd -sdk /path/to/ext-x.x.x.x generate app MyApp .
 
 To build an application on current directory
 
-    docker run --rm -v "$(pwd)":/home/sencha/app herloct/sencha-cmd app build
+    docker run --rm -v "$(pwd)":/project herloct/sencha-cmd app build
 
 Or, you can use [Docker Compose](https://docs.docker.com/compose/)'s docker-compose.yml
 
     sencha:
         image: herloct/sencha-cmd
         volumes:
-            - /local/path:/home/sencha/app
+            - /local/path:/project
 
 And run it via
 
