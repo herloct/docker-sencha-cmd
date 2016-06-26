@@ -5,21 +5,25 @@ MAINTAINER herloct <herloct@gmail.com>
 ENV FC_LANG en-US
 
 RUN apk update && \
-    apk upgrade && \
     apk add \
+        build-base \
         curl \
+        curl-dev \
+        libffi-dev \
         openjdk7-jre-base \
         ruby \
+        ruby-dev \
+        ruby-bundler \
+        ruby-irb \
+        ruby-rdoc \
         ttf-dejavu \
         unzip && \
+    gem install sass compass && \
     rm -rf /var/cache/apk/* /tmp/*
 
-RUN addgroup sencha && \
-    adduser -s /bin/bash -D -G sencha sencha && \
-    mkdir -p /home/sencha/app
-ADD . /home/sencha/app
-
-RUN chown -R sencha:sencha /home/sencha
+RUN adduser -D sencha && \
+    mkdir -p /project && \
+    chown -R sencha:sencha /home/sencha /project
 
 USER sencha
 ENV HOME /home/sencha
@@ -28,12 +32,15 @@ RUN curl -o /home/sencha/cmd.sh.zip http://cdn.sencha.com/cmd/6.1.3/no-jre/Sench
     unzip -p /home/sencha/cmd.sh.zip > /home/sencha/cmd-install.sh && \
     chmod +x /home/sencha/cmd-install.sh && \
     /home/sencha/cmd-install.sh -q && \
+    chmod +x /home/sencha/bin/Sencha/Cmd/6.1.3.42/bin/linux-x64/phantomjs/phantomjs && \
     rm /home/sencha/cmd*
 
-WORKDIR /home/sencha/app
+ENV PATH /home/sencha/bin/Sencha/Cmd/6.1.3.42/:$PATH
+
+VOLUME /project
+WORKDIR /project
 
 EXPOSE 1841
 
-ENTRYPOINT ["/home/sencha/bin/Sencha/Cmd/6.1.3.42/sencha"]
+ENTRYPOINT ["sencha"]
 CMD ["help"]
-
