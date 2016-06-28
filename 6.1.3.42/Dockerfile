@@ -1,11 +1,10 @@
-FROM debian:jessie
+FROM java:8-jre
 
 MAINTAINER herloct <herloct@gmail.com>
 
 RUN apt-get update && \
     apt-get install -y \
         curl \
-        openjdk-7-jre-headless \
         ruby \
         unzip
 
@@ -30,5 +29,7 @@ WORKDIR /project
 
 EXPOSE 1841
 
-ENTRYPOINT ["sencha"]
+COPY entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]

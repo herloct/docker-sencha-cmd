@@ -2,11 +2,10 @@
 
 ## What's Inside
 
-This image is based of [Debian Image](https://hub.docker.com/_/debian/)
+This image is based of [Java 8 JRE Image](https://hub.docker.com/_/java/)
 
 * Sencha CMD 6.1
 * Ruby 2.1
-* Java OpenJDK 7 JRE Headless
 
 ## Supported tags and respective `Dockerfile` links
 
